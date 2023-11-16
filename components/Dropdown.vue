@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { category } from "~/composables/constants/category";
-const isShow = ref(false);
-defineEmits(["selectedCategory"]);
+  import { category } from "~/composables/constants/category";
+  const isShow = ref(false);
+  defineEmits(["selectedCategory"]);
 </script>
 
 <template>
@@ -12,8 +12,9 @@ defineEmits(["selectedCategory"]);
     >
       <span class="text-primary font-medium">Category</span>
       <i
-        :class="`ri-arrow-down-s-line text-primary text-xl text-bold transition
-duration-300 ${isShow ? 'rotate-180' : 'rotate-0'}`"
+        :class="`ri-arrow-down-s-line text-primary text-xl text-bold transition duration-300 ${
+          isShow ? 'rotate-180' : 'rotate-0'
+        }`"
       ></i>
     </div>
     <!-- Dropdown menu -->
@@ -29,7 +30,10 @@ duration-300 ${isShow ? 'rotate-180' : 'rotate-0'}`"
             >All</span
           >
         </li>
-        <li v-for="(item, index) in category" :key="index">
+        <li
+          v-for="(item, index) in category"
+          :key="index"
+        >
           <span
             class="block px-4 py-2 hover:bg-primary hover:text-white transition duration-200 cursor-pointer"
             @click="$emit('selectedCategory', item.name)"
