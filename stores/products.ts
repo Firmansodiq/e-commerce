@@ -5,26 +5,6 @@ export const useProductsStore = defineStore("products", {
     message: "",
   }),
   actions: {
-    async getAllProducts() {
-      const { baseUrl, apikey } = useAppConfig();
-      const { data, error } = await useFetch("/rest/v1/products", {
-        baseURL: baseUrl,
-        method: "GET",
-        headers: {
-          apikey: apikey,
-        },
-      });
-
-      if (error.value) {
-        this.status = false;
-        this.message = "Get Products Failed !!!";
-      } else if (data) {
-        this.status = true;
-        this.message = "Get Products successfully";
-        this.products = data.value;
-      }
-    },
-
     async createProduct(payload: any) {
       const { baseUrl, apikey } = useAppConfig();
       const { data, error } = await useFetch("/rest/v1/products", {
@@ -42,6 +22,26 @@ export const useProductsStore = defineStore("products", {
       } else if (data) {
         this.status = true;
         this.message = "Get Products successfully";
+      }
+    },
+
+    async getAllProducts() {
+      const { baseUrl, apikey } = useAppConfig();
+      const { data, error } = await useFetch("/rest/v1/products", {
+        baseURL: baseUrl,
+        method: "GET",
+        headers: {
+          apikey: apikey,
+        },
+      });
+
+      if (error.value) {
+        this.status = false;
+        this.message = "Get Products Failed !!!";
+      } else if (data) {
+        this.status = true;
+        this.message = "Get Products successfully";
+        this.products = data.value;
       }
     },
   },

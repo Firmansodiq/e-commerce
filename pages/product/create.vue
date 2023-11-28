@@ -92,7 +92,7 @@
         behavior: "smooth",
       });
       setTimeout(() => {
-        router.push({ path: "/product" });
+        router.push({ path: "/products" });
       }, 1000);
     }
   };
